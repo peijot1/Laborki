@@ -1,0 +1,58 @@
+import java.util.ArrayList;
+import java.math.BigInteger;
+
+
+class Fibbonacci
+{
+    ArrayList<BigInteger> FibbList = new ArrayList<BigInteger>();
+     
+    BigInteger temporaryAnswer = null;
+     
+    boolean validNumber = true;
+     
+    int IdOfFibbNumber = 2;
+
+    public ArrayList<BigInteger> createFibbList()
+    {
+
+     FibbList.add(BigInteger.valueOf(1));
+     FibbList.add(BigInteger.valueOf(1));
+     
+    
+    do {
+        
+        temporaryAnswer = FibbList.get(IdOfFibbNumber-1).add(FibbList.get(IdOfFibbNumber-2));
+         
+        FibbList.add(temporaryAnswer);
+         
+        IdOfFibbNumber++;
+         
+        if(temporaryAnswer.toString().length() >= 1000)
+        {
+             validNumber=false;
+        }
+         
+    }while (validNumber == true);
+    
+return FibbList;
+
+     }
+     
+    public void showAnswer(ArrayList<BigInteger> FibbList)
+    {
+         System.out.println("Answer: " + FibbList.size() + "   "); 
+         System.out.println("       ");
+    }
+     
+     
+}
+
+class HelloWorld
+{
+
+     public static void main(String []args){
+         Fibbonacci f = new Fibbonacci();
+         f.showAnswer(f.createFibbList());
+     }
+
+}
